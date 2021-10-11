@@ -15,7 +15,13 @@
 			switch (msg.type) {
 				case "login":
 					setCookie("sessionID", msg.sessionID, 1 / 1440)
-					setLog(msg.status == "success" ? "Successful login!" : msg.message)
+					if(msg.success){
+						setLog("Login Successful")
+						user = {
+							username: msg.username,
+						}
+					}else
+						setLog(msg.message)
 					user = {
 						username: msg.username,
 					}
